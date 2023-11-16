@@ -14,7 +14,7 @@ export USE_VIRTUAL_CUSTOMER="$(echo $CONFIG | jq -r '.use_virtual_customer')"
 # set initial variables
 export SUFFIX=$RANDOM
 #export RG=$PREFIX-aks-reddog-$SUFFIX
-export RG=reddog-aks-$SUFFIX
+export RG=rg-reddog-aks-$SUFFIX
 export LOGFILE_NAME="./outputs/${RG}.log"
 
 ./walk-the-dog.sh $RG $LOCATION $SUFFIX $USERNAME $MONITORING $STATE_STORE $USE_VIRTUAL_CUSTOMER 2>&1 | tee -a $LOGFILE_NAME

@@ -190,13 +190,13 @@ az ad sp create-for-rbac \
         --keyvault $KV_NAME \
         --years 1
 
-az ad sp create-for-rbac \
-        --name "http://sp-briantest.microsoft.com" \
-        --only-show-errors \
-        --create-cert \
-        --cert reddog-aks-4475-test-cert \
-        --keyvault reddog358briar4475 \
-        --years 1        
+# az ad sp create-for-rbac \
+#         --name "http://sp-briantest.microsoft.com" \
+#         --only-show-errors \
+#         --create-cert \
+#         --cert reddog-aks-4475-test-cert \
+#         --keyvault reddog358briar4475 \
+#         --years 1        
 
 ## Get SP APP ID
 echo 'Getting SP_APPID ...'
@@ -334,7 +334,7 @@ az k8s-configuration flux create \
     --scope cluster \
     --name reddog-components-base \
     --namespace flux-system \
-    --url https://github.com/Azure/reddog-aks.git \
+    --url https://github.com/PennStateLefty/reddog-aks \
     --branch main \
     --kustomization name=kustomize path=./manifests/base/components-main prune=true 
 
@@ -350,7 +350,7 @@ then
         --scope cluster \
         --name reddog-components-redis \
         --namespace flux-system \
-        --url https://github.com/Azure/reddog-aks.git \
+        --url https://github.com/PennStateLefty/reddog-aks \
         --branch main \
         --kustomization name=kustomize path=./manifests/base/components-redis prune=true 
 elif [ "$STATE_STORE" = "cosmos" ]
@@ -365,7 +365,7 @@ then
         --scope cluster \
         --name reddog-components-cosmos \
         --namespace flux-system \
-        --url https://github.com/Azure/reddog-aks.git \
+        --url https://github.com/PennStateLefty/reddog-aks \
         --branch main \
         --kustomization name=kustomize path=./manifests/base/components-cosmos prune=true 
 else
@@ -382,7 +382,7 @@ az k8s-configuration flux create \
     --scope cluster \
     --name reddog-deployments \
     --namespace flux-system \
-    --url https://github.com/Azure/reddog-aks.git \
+    --url https://github.com/PennStateLefty/reddog-aks \
     --branch main \
     --kustomization name=kustomize path=./manifests/base/deployments prune=true 
 
@@ -398,7 +398,7 @@ then
         --scope cluster \
         --name reddog-virt-customer \
         --namespace flux-system \
-        --url https://github.com/Azure/reddog-aks.git \
+        --url https://github.com/PennStateLefty/reddog-aks \
         --branch main \
         --kustomization name=kustomize path=./manifests/base/deployments-virt-customer prune=true 
 else
